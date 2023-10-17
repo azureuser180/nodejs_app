@@ -8,16 +8,29 @@ pipeline {
             }
         }
 
-        stage('Build and Push Docker Image') {
+        stage('Build') {
             steps {
-                script {
+                sh 'docker build -t ashraf313/nodejapp  .'
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PASS')]) {
+                    sh 'docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASS'
+                }
+                sh 'docker push ashraf313/nodejapp:latest'
+            }
+        }    
+        
+       
 		
                
                
-                       echo "Build and Push Docker Image"
-                    }
-                }
-            }
-        }
+           
+                    
+                
+           
+        
     }
 }
