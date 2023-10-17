@@ -2,7 +2,7 @@ const http = require('http');
 
 const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello, World!\n');
+  res.end('Hello, Ya allah Ya mohammand . allah is the best and mohammad sallallaho alywasallam is the best!\n');
 });
 
 const port = process.env.PORT || 3000;
