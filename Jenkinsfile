@@ -24,10 +24,10 @@ pipeline {
         }    
         
        
-        stage('Cleanup and Restart') {
+        stage('Deploying the container') {
 
         steps{
-                echo "Final steps"
+            sh "docker-compose down && docker-compose up -d"
          }    
     }		
                
