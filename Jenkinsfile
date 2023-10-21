@@ -27,7 +27,7 @@ pipeline {
         stage('Cleanup and Restart') {
 
         steps{
-        sh 'docker stop $(docker ps -q)'
+        sh 'docker stop $(docker ps -aq)'
         sh 'docker rm $(docker ps -aq)'
         sh 'docker run --name con1 -p 3000:3000 ashraf313/nodejapp:latest'
         }    
