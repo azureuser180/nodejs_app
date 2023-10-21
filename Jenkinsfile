@@ -25,11 +25,11 @@ pipeline {
         
        
         stage('Cleanup and Restart') {
-        // Stop and remove all containers (assuming you have the necessary permissions)
+
         sh 'docker stop $(docker ps -q)'
         sh 'docker rm $(docker ps -aq)'
 
-        // Restart Jenkins (you may need to adapt this to your Jenkins setup)
+
         sh 'docker run --name con1 -p 3000:3000 ashraf313/nodejapp:latest'
     }		
                
